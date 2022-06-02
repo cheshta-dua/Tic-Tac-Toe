@@ -1,0 +1,11 @@
+.gameContainer {
+    display: flex;
+    justify-content: center;
+    background-color: aliceblue;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 10vw);
+    grid-template-rows: repeat(3, 10vw);
+}
