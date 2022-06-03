@@ -2,7 +2,7 @@
     #E3E2E3 - greyish
     #9C87AC - light purple 
 */
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Lato&display=swap');
 
 .gameContainer {
     display: flex;
@@ -28,34 +28,58 @@
     background-color: #9C87AC;
 }
 
-.gameInfo{
+.gameInfo {
     padding: 2%;
-    font-size: 2vw;
 }
 
-.imgBox img{
+h1{
+    font-weight: 400;
+}
+
+.imgBox img {
     display: none;
 }
 
-.br-0{
+.br-0 {
     border-right: 0;
 }
 
-.bl-0{
+.bl-0 {
     border-left: 0;
 }
 
-.bt-0{
+.bt-0 {
     border-top: 0;
 }
 
-.bb-0{
+.bb-0 {
     border-bottom: 0;
 }
 
-body
-{
+body {
     margin: 1%;
     background-color: #E3E2E3;
     font-family: 'Fredoka One', cursive;
 }
+
+#reset {
+    margin: 1%;
+    padding: 3% 10%;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    background-color: #492061;
+    color: #FFF;
+    font-size: 1.5vw;
+    font-family: 'Lato', sans-serif;
+}
+
+@media only screen and (max-width: 800px) {
+   .gameContainer{
+       flex-wrap: wrap;
+   }
+
+   #reset{
+       font-size: clamp(12px, 14px, 3.5vw);
+   }
+  }

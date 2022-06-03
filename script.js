@@ -42,3 +42,14 @@ Array.from(boxes).forEach(element => {
         }
     })
 })
+
+//reset button
+reset.addEventListener('click', () => {
+    let boxtext = document.querySelectorAll(".text");
+    Array.from(boxtext).forEach(element => {
+        element.innerText = "";
+    });
+    turn = "X";
+    document.getElementsByClassName("info")[0].innerText="Turn for " + turn;
+    gameOver = false;
+})
