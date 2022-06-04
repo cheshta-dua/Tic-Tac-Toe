@@ -4,40 +4,34 @@
 */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Lato&display=swap');
 
-.gameContainer {
-    display: flex;
-    justify-content: center;
-}
-
 .container {
-    display: grid;
+    display: inline-grid;
     grid-template-columns: repeat(3, 10vw);
     grid-template-rows: repeat(3, 10vw);
+    padding: 10px;
+}
+
+p {
+    margin: 0px;
 }
 
 .box {
-    border: 2px solid #000;
+    border: 2px solid #9C87AC;
     font-size: 7vw;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .box:hover {
-    background-color: #9C87AC;
+    background-color: #f4e7ff;
 }
 
 .gameInfo {
-    padding: 2%;
+    padding: 1.5%;
+    font-size: 3vw;
 }
 
-h1{
-    font-weight: 400;
-}
-
-.imgBox img {
-    display: none;
+.info {
+    font-size: 2vw;
 }
 
 .br-0 {
@@ -57,14 +51,16 @@ h1{
 }
 
 body {
-    margin: 1%;
-    background-color: #E3E2E3;
+    margin: 20px;
+    background-color: #fff4ff;
     font-family: 'Fredoka One', cursive;
+    color: #492061;
+    text-align: center;
 }
 
 #reset {
     margin: 1%;
-    padding: 3% 10%;
+    padding: 1% 4%;
     border-radius: 5px;
     cursor: pointer;
     border: none;
@@ -75,11 +71,20 @@ body {
 }
 
 @media only screen and (max-width: 800px) {
-   .gameContainer{
-       flex-wrap: wrap;
-   }
+    .gameContainer {
+        flex-wrap: wrap;
+    }
 
-   #reset{
-       font-size: clamp(12px, 14px, 3.5vw);
-   }
-  }
+    #reset {
+        font-size: clamp(12px, 3vw, 14px);
+        /*minimum, preferred & max*/
+    }
+
+    .gameInfo {
+        font-size: clamp(16px, 4vw, 24px);
+    }
+
+    .info {
+        font-size: clamp(14px, 3.5vw, 16px);
+    }
+}
