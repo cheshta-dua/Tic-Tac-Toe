@@ -11,10 +11,6 @@
     padding: 10px;
 }
 
-p {
-    margin: 0px;
-}
-
 .box {
     border: 2px solid #9C87AC;
     font-size: 7vw;
@@ -26,7 +22,10 @@ p {
 }
 
 .gameInfo {
-    padding: 1.5%;
+    padding-bottom: 1.5%;
+}
+
+.title{
     font-size: 3vw;
 }
 
@@ -80,11 +79,16 @@ body {
         /*minimum, preferred & max*/
     }
 
-    .gameInfo {
+    .title {
         font-size: clamp(16px, 4vw, 24px);
     }
 
     .info {
         font-size: clamp(14px, 3.5vw, 16px);
+    }
+
+    .container {
+        grid-template-columns: repeat(3, 20vw);
+        grid-template-rows: repeat(3, 20vw);
     }
 }

@@ -20,6 +20,13 @@ function checkWin() {
     wins.forEach(e => {
         if ((boxtexts[e[0]].innerText === boxtexts[e[1]].innerText) && (boxtexts[e[1]].innerText === boxtexts[e[2]].innerText) && (boxtexts[e[0]].innerText !== "")) {
             document.querySelector(".info").innerText = boxtexts[e[0]].innerText + " won";
+            
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+
             gameOver = true;
         }
     })
@@ -50,6 +57,6 @@ reset.addEventListener('click', () => {
         element.innerText = "";
     });
     turn = "X";
-    document.getElementsByClassName("info")[0].innerText="Turn for " + turn;
+    document.getElementsByClassName("info")[0].innerText = "Turn for " + turn;
     gameOver = false;
 })
