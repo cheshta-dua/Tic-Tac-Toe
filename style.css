@@ -2,7 +2,83 @@
     #E3E2E3 - greyish
     #9C87AC - light purple 
 */
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Lato:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+    margin-top: 1%;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 1.5vw;
+    padding: 1vw;
+    margin: 1rem;
+}
+
+.active {
+    border-bottom: 3px solid #492061;
+}
+
+.inactive {
+    position: relative;
+}
+
+.inactive:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #492061;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.inactive:hover {
+    background-color: #f4e7ff;
+}
+
+.inactive:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* .modes {
+    float: right;
+}
+.material-symbols-outlined{
+    font-size: 2.5vw !important;
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+} */
+/* #dark, #light {
+    font-size: 2.5vw !important;
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+} */
+/* 
+#light {
+    display: none;
+} */
+
+.players {
+    margin: auto;
+}
 
 .container {
     display: inline-grid;
@@ -23,10 +99,6 @@
 
 .gameInfo {
     padding-bottom: 1.5%;
-}
-
-.title{
-    font-size: 3vw;
 }
 
 .info {
@@ -50,7 +122,6 @@
 }
 
 body {
-    margin: 20px;
     background-color: #fff4ff;
     font-family: 'Fredoka One', cursive;
     color: #492061;
@@ -59,7 +130,7 @@ body {
 
 #reset {
     margin: 1%;
-    padding: 1% 4%;
+    padding: 0.8% 3%;
     border-radius: 5px;
     cursor: pointer;
     border: none;
@@ -70,6 +141,14 @@ body {
 }
 
 @media only screen and (max-width: 800px) {
+    nav {
+        height: 2rem;
+    }
+
+    nav a {
+        font-size: clamp(14px, 4vw, 18px);
+    }
+
     .gameContainer {
         flex-wrap: wrap;
     }
@@ -77,10 +156,6 @@ body {
     #reset {
         font-size: clamp(12px, 3vw, 14px);
         /*minimum, preferred & max*/
-    }
-
-    .title {
-        font-size: clamp(16px, 4vw, 24px);
     }
 
     .info {
@@ -91,4 +166,89 @@ body {
         grid-template-columns: repeat(3, 20vw);
         grid-template-rows: repeat(3, 20vw);
     }
+
+    /* #dark, #light {
+        font-size: clamp(16px, 4vw, 18px) !important;
+    }*/
 }
+
+/*body.dark-theme {
+    color: #eee;
+    background: #121212;
+    font-family: 'Lato', sans-serif;
+}
+
+body.dark-theme .info
+{
+    font-weight: 700;
+}
+
+body.dark-theme nav{
+    font-weight: 600;
+}
+
+body.dark-theme .box{
+    border-color: #eee;
+}
+
+body.dark-theme .box:hover{
+  background-color: #292929;
+}
+
+body.dark-theme #light{
+    display: flex;
+}
+
+body.dark-theme #dark{
+    display: none;
+}
+
+   body {
+    transition: background 0.2s linear;
+  }
+  body.dark {
+    background-color: #292c35;
+  }
+  .checkbox {
+    opacity: 0;
+    position: absolute;
+  }
+  
+  .label {
+    width: 50px;
+    height: 26px;
+    background-color:#111;
+    display: flex;
+    border-radius:50px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    position: relative;
+    transform: scale(1.5);
+  }
+  
+  .ball {
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    border-radius: 50%;
+    transition: transform 0.2s linear;
+  }
+  
+  target the elemenent after the label
+  .checkbox:checked + .label .ball{
+    transform: translateX(24px);
+  }
+  
+  .fa-moon {
+    color: pink;
+    font-family: 'Font-Awesome';
+  }
+  
+  .fa-sun {
+    color: yellow;
+    font-family: 'Font-Awesome';
+  } */

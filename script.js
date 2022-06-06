@@ -20,7 +20,7 @@ function checkWin() {
     wins.forEach(e => {
         if ((boxtexts[e[0]].innerText === boxtexts[e[1]].innerText) && (boxtexts[e[1]].innerText === boxtexts[e[2]].innerText) && (boxtexts[e[0]].innerText !== "")) {
             document.querySelector(".info").innerText = boxtexts[e[0]].innerText + " won";
-            
+
             confetti({
                 particleCount: 100,
                 spread: 70,
@@ -60,3 +60,19 @@ reset.addEventListener('click', () => {
     document.getElementsByClassName("info")[0].innerText = "Turn for " + turn;
     gameOver = false;
 })
+
+// const btn = document.getElementById("dark");
+// btn.addEventListener('click', function () {
+//     document.body.classList.toggle('dark-theme');
+// })
+
+// const btn2 = document.getElementById("light");
+// btn2.addEventListener('click', function () {
+//     document.body.classList.toggle('light-theme');
+// })
+
+// const checkbox = document.getElementById('checkbox');
+
+// checkbox.addEventListener('change', ()=>{
+//   document.body.classList.toggle('dark');
+// })
