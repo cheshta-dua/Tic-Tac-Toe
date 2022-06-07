@@ -61,18 +61,15 @@ reset.addEventListener('click', () => {
     gameOver = false;
 })
 
-// const btn = document.getElementById("dark");
-// btn.addEventListener('click', function () {
-//     document.body.classList.toggle('dark-theme');
-// })
+const ham = document.querySelector(".hamburger");
+const players = document.querySelector(".players");
 
-// const btn2 = document.getElementById("light");
-// btn2.addEventListener('click', function () {
-//     document.body.classList.toggle('light-theme');
-// })
+ham.addEventListener('click', function () {
+    ham.classList.toggle("active");
+    players.classList.toggle("active");
+})
 
-// const checkbox = document.getElementById('checkbox');
-
-// checkbox.addEventListener('change', ()=>{
-//   document.body.classList.toggle('dark');
-// })
+document.querySelectorAll(".players").forEach(n => n.addEventListener('click', function () {
+    ham.classList.remove("active");
+    players.classList.remove("active");
+}))

@@ -1,6 +1,7 @@
-/* color pallete #492061 - dark purple
-    #E3E2E3 - greyish
-    #9C87AC - light purple 
+/* #444F54 dark grey
+#5C6464 light grey
+#3594E8 blue
+#87BB51 green
 */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Lato:wght@400;600;700&display=swap');
 
@@ -22,17 +23,20 @@ nav a {
     font-size: 1.5vw;
     padding: 1vw;
     margin: 1rem;
+    color: #444F54;
 }
 
-.active {
-    border-bottom: 3px solid #492061;
+/* styling hover effects for players */
+
+.player-active {
+    border-bottom: 3px solid #444F54;
 }
 
-.inactive {
+.player-inactive {
     position: relative;
 }
 
-.inactive:after {
+.player-inactive:after {
     content: '';
     position: absolute;
     width: 100%;
@@ -40,41 +44,19 @@ nav a {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #492061;
+    background-color: #5C6464;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
 
-.inactive:hover {
-    background-color: #f4e7ff;
+.player-inactive:hover {
+    background-color: #f1f1f1;
 }
 
-.inactive:hover:after {
+.player-inactive:hover:after {
     transform: scaleX(1);
     transform-origin: bottom left;
 }
-
-/* .modes {
-    float: right;
-}
-.material-symbols-outlined{
-    font-size: 2.5vw !important;
-    background-color: transparent;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-} */
-/* #dark, #light {
-    font-size: 2.5vw !important;
-    background-color: transparent;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-} */
-/* 
-#light {
-    display: none;
-} */
 
 .players {
     margin: auto;
@@ -88,13 +70,13 @@ nav a {
 }
 
 .box {
-    border: 2px solid #9C87AC;
+    border: 2px solid #5C6464;
     font-size: 7vw;
     cursor: pointer;
 }
 
 .box:hover {
-    background-color: #f4e7ff;
+    background-color: #f1f1f1;
 }
 
 .gameInfo {
@@ -122,9 +104,8 @@ nav a {
 }
 
 body {
-    background-color: #fff4ff;
     font-family: 'Fredoka One', cursive;
-    color: #492061;
+    color: #444F54;
     text-align: center;
 }
 
@@ -134,10 +115,26 @@ body {
     border-radius: 5px;
     cursor: pointer;
     border: none;
-    background-color: #492061;
-    color: #FFF;
+    background-color: #444F54;
+    color: #FFFFFF;
     font-size: 1.5vw;
     font-family: 'Lato', sans-serif;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #444F54;
+
 }
 
 @media only screen and (max-width: 800px) {
@@ -147,6 +144,8 @@ body {
 
     nav a {
         font-size: clamp(14px, 4vw, 18px);
+        /*minimum, preferred & max
+        if preferred > max, thn max will be used otherwise preferred will be used*/
     }
 
     .gameContainer {
@@ -155,7 +154,6 @@ body {
 
     #reset {
         font-size: clamp(12px, 3vw, 14px);
-        /*minimum, preferred & max*/
     }
 
     .info {
@@ -167,88 +165,66 @@ body {
         grid-template-rows: repeat(3, 20vw);
     }
 
-    /* #dark, #light {
-        font-size: clamp(16px, 4vw, 18px) !important;
-    }*/
+    .box:hover {
+        background-color: transparent;
+    }
+
+    /* overriding player hover effects cos small screens generally don't require hover effects */
+
+    .player-active {
+        border-bottom: none;
+        text-decoration: underline;
+    }
+
+    .player-inactive {
+        margin-top: 70px;
+    }
+
+    .player-inactive:hover {
+        background-color: transparent;
+    }
+
+    .player-inactive:after {
+        background-color: transparent;
+        height: 0px;
+    }
 }
 
-/*body.dark-theme {
-    color: #eee;
-    background: #121212;
-    font-family: 'Lato', sans-serif;
-}
+@media only screen and (max-width: 768px) {
+    .hamburger {
+        display: block;
+        margin-left: 95%;
+    }
 
-body.dark-theme .info
-{
-    font-weight: 700;
-}
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
 
-body.dark-theme nav{
-    font-weight: 600;
-}
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
 
-body.dark-theme .box{
-    border-color: #eee;
-}
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
 
-body.dark-theme .box:hover{
-  background-color: #292929;
-}
+    nav a {
+        display: flex;
+    }
 
-body.dark-theme #light{
-    display: flex;
-}
+    .players {
+        background-color: #f1f1f1;
+        position: fixed;
+        right: -100%;
+        top: 0px;
+        flex-direction: column;
+        width: 30%;
+        height: 100%;
+        text-align: center;
+        transition: 0.3s;
+    }
 
-body.dark-theme #dark{
-    display: none;
+    .players.active {
+        right: 0;
+    }
 }
-
-   body {
-    transition: background 0.2s linear;
-  }
-  body.dark {
-    background-color: #292c35;
-  }
-  .checkbox {
-    opacity: 0;
-    position: absolute;
-  }
-  
-  .label {
-    width: 50px;
-    height: 26px;
-    background-color:#111;
-    display: flex;
-    border-radius:50px;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px;
-    position: relative;
-    transform: scale(1.5);
-  }
-  
-  .ball {
-    width: 20px;
-    height: 20px;
-    background-color: white;
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    border-radius: 50%;
-    transition: transform 0.2s linear;
-  }
-  
-  target the elemenent after the label
-  .checkbox:checked + .label .ball{
-    transform: translateX(24px);
-  }
-  
-  .fa-moon {
-    color: pink;
-    font-family: 'Font-Awesome';
-  }
-  
-  .fa-sun {
-    color: yellow;
-    font-family: 'Font-Awesome';
-  } */
