@@ -61,15 +61,18 @@ reset.addEventListener('click', () => {
     gameOver = false;
 })
 
+
+//hamburger menu
 const ham = document.querySelector(".hamburger");
-const players = document.querySelector(".players");
+const panel = document.querySelector(".panel");
 
 ham.addEventListener('click', function () {
     ham.classList.toggle("active");
-    players.classList.toggle("active");
+    panel.classList.toggle("active");
 })
 
-document.querySelectorAll(".players").forEach(n => n.addEventListener('click', function () {
-    ham.classList.remove("active");
-    players.classList.remove("active");
-}))
+//toggle to dark mode
+const modeBtn = document.querySelector(".switch");
+modeBtn.addEventListener('change', () => {
+    document.body.classList.toggle('dark-theme');
+})

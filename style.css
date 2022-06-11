@@ -5,63 +5,6 @@
 */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Lato:wght@400;600;700&display=swap');
 
-* {
-    margin: 0;
-}
-
-nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    height: 4rem;
-    margin-top: 1%;
-}
-
-nav a {
-    text-decoration: none;
-    font-size: 1.5vw;
-    padding: 1vw;
-    margin: 1rem;
-    color: #444F54;
-}
-
-/* styling hover effects for players */
-
-.player-active {
-    border-bottom: 3px solid #444F54;
-}
-
-.player-inactive {
-    position: relative;
-}
-
-.player-inactive:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #5C6464;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-}
-
-.player-inactive:hover {
-    background-color: #f1f1f1;
-}
-
-.player-inactive:hover:after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
-
-.players {
-    margin: auto;
-}
-
 .container {
     display: inline-grid;
     grid-template-columns: repeat(3, 10vw);
@@ -81,6 +24,10 @@ nav a {
 
 .gameInfo {
     padding-bottom: 1.5%;
+}
+
+.gameContainer {
+    margin: 20px;
 }
 
 .info {
@@ -107,6 +54,7 @@ body {
     font-family: 'Fredoka One', cursive;
     color: #444F54;
     text-align: center;
+    margin: 10px;
 }
 
 #reset {
@@ -121,11 +69,6 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
-.hamburger {
-    display: none;
-    cursor: pointer;
-}
-
 .bar {
     display: block;
     width: 25px;
@@ -137,23 +80,115 @@ body {
 
 }
 
+.hamburger {
+    display: block;
+    float: right;
+    margin-right: 1%;
+    cursor: pointer;
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.panel {
+    background-color: #f1f1f1;
+    position: fixed;
+    right: -100%;
+    top: 0px;
+    flex-direction: column;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.panel.active {
+    right: 0;
+}
+
+.mode {
+    margin-top: 50%;
+    line-height: 2.5vw;
+}
+
+.modeTxt {
+    margin: 0.5%;
+    font-size: 1.5vw;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-right: 5px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
 @media only screen and (max-width: 800px) {
-    nav {
-        height: 2rem;
-    }
-
-    nav a {
-        font-size: clamp(14px, 4vw, 18px);
-        /*minimum, preferred & max
-        if preferred > max, thn max will be used otherwise preferred will be used*/
-    }
-
-    .gameContainer {
-        flex-wrap: wrap;
-    }
-
     #reset {
         font-size: clamp(12px, 3vw, 14px);
+        /*minimum, preferred & max
+        if preferred > max, thn max will be used otherwise preferred will be used*/
     }
 
     .info {
@@ -169,62 +204,44 @@ body {
         background-color: transparent;
     }
 
-    /* overriding player hover effects cos small screens generally don't require hover effects */
-
-    .player-active {
-        border-bottom: none;
-        text-decoration: underline;
+    .panel {
+        width: 30%;
     }
 
-    .player-inactive {
-        margin-top: 70px;
+    .mode {
+        line-height: 4vw;
     }
 
-    .player-inactive:hover {
-        background-color: transparent;
+    .modeTxt {
+        font-size: clamp(14px, 16px, 14px);
     }
 
-    .player-inactive:after {
-        background-color: transparent;
-        height: 0px;
+    .switch {
+        width: 2.8rem;
+        height: 1.5rem;
     }
+
+    .slider::before {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    input:checked+.slider:before {
+        -webkit-transform: translateX(1.3rem);
+        -ms-transform: translateX(1.3rem);
+        transform: translateX(1.3rem);
+    }
+
 }
 
-@media only screen and (max-width: 768px) {
-    .hamburger {
-        display: block;
-        margin-left: 95%;
-    }
+.dark-theme {
+    color: #eee;
+    background: #121212;
+}
 
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
-    }
+@media only screen and (max-width: 440px) {
+    /* .mode{
+    send dark mode in next line
+ } */
 
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-
-    nav a {
-        display: flex;
-    }
-
-    .players {
-        background-color: #f1f1f1;
-        position: fixed;
-        right: -100%;
-        top: 0px;
-        flex-direction: column;
-        width: 30%;
-        height: 100%;
-        text-align: center;
-        transition: 0.3s;
-    }
-
-    .players.active {
-        right: 0;
-    }
 }
