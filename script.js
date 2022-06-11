@@ -36,10 +36,17 @@ function checkWin() {
 let boxes = document.getElementsByClassName("box");
 //Array.from() creates an array from an object
 Array.from(boxes).forEach(element => {
-    let boxtext = element.querySelector(".text"); //get the first element 
+    var boxtext = element.querySelector(".text"); //get the first element 
     element.addEventListener('click', () => {
         if (boxtext.innerText === '') {
             boxtext.innerText = turn;
+            //for changing color of X & 0 WRONG APPROACH 
+            // if (turn === "X") {
+            //     boxtext.classList.add("playerX");
+            // }
+            // else {
+            //     boxtext.classList.add("player0");
+            // }
             turn = changeTurn();
             // audioTurn.play();
             checkWin();
