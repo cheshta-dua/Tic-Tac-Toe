@@ -40,13 +40,13 @@ Array.from(boxes).forEach(element => {
     element.addEventListener('click', () => {
         if (boxtext.innerText === '') {
             boxtext.innerText = turn;
-            //for changing color of X & 0 WRONG APPROACH 
-            // if (turn === "X") {
-            //     boxtext.classList.add("playerX");
-            // }
-            // else {
-            //     boxtext.classList.add("player0");
-            // }
+            //for changing color of X & 0  
+            if (turn === "X") {
+                boxtext.classList.add("playerX");
+            }
+            else {
+                boxtext.classList.add("player0");
+            }
             turn = changeTurn();
             // audioTurn.play();
             checkWin();
@@ -62,6 +62,13 @@ reset.addEventListener('click', () => {
     let boxtext = document.querySelectorAll(".text");
     Array.from(boxtext).forEach(element => {
         element.innerText = "";
+        if (element.className === "playerX") {
+            element.classList.remove("playerX");
+        }
+        else {
+            element.classList.remove("player0");
+        }
+
     });
     turn = "X";
     document.getElementsByClassName("info")[0].innerText = "Turn for " + turn;
@@ -83,3 +90,5 @@ const modeBtn = document.querySelector(".switch");
 modeBtn.addEventListener('change', () => {
     document.body.classList.toggle('dark-theme');
 })
+
+
