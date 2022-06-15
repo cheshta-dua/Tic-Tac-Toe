@@ -1,3 +1,4 @@
+//setting up sounds 
 let audioTurnX = new Audio("others/tingX.mp3");
 let audioTurn0 = new Audio("others/ting0.mp3");
 let audioWin = new Audio("others/win.mp3");
@@ -7,7 +8,6 @@ let turn = "X";
 let gameOver = false;
 
 // Function to change turn
-// he did const changeTurn() => {}
 function changeTurn() {
     return turn === "X" ? "0" : "X";
     // === used for strict equality check where the type is also checked (10!="10")
@@ -35,15 +35,14 @@ function checkWin() {
 
 //Game logic 
 let boxes = document.getElementsByClassName("box");
-//Array.from() creates an array from an object
-Array.from(boxes).forEach(element => {
+Array.from(boxes).forEach(element => { //Array.from() creates an array from an object
     var boxtext = element.querySelector(".text"); //get the first element 
     element.addEventListener('click', () => {
         if (boxtext.innerText === '') {
             boxtext.innerText = turn;
-            //for changing color of X & 0  
+
             if (turn === "X") {
-                boxtext.classList.add("playerX");
+                boxtext.classList.add("playerX");  //for changing color of X (blue X & green 0)
                 audioTurnX.play();
             }
             else {
@@ -94,4 +93,21 @@ modeBtn.addEventListener('change', () => {
     document.body.classList.toggle('dark-theme');
 })
 
+//toggle sounds
+const soundBtn = document.getElementById("soundSwitch");
+var checkbox = document.querySelector("input[name=soundChkbox]");
+soundBtn.addEventListener('change', () => {
+    if (checkbox.checked) {
+        audioReset.muted = true;
+        audioTurn0.muted = true;
+        audioTurnX.muted = true;
+        audioWin.muted = true;
+    }
 
+    else {
+        audioReset.muted = false;
+        audioTurn0.muted = false;
+        audioTurnX.muted = false;
+        audioWin.muted = false;
+    }
+})

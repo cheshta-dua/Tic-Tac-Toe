@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Lato:wght@400;600;700&display=swap');
 
+.playerX {
+    color: #87BB51;
+}
+
+.player0 {
+    color: #3594E8
+}
+
 .container {
     display: inline-grid;
     grid-template-columns: repeat(3, 10vw);
@@ -72,7 +80,6 @@ body {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     background-color: #444F54;
-
 }
 
 .hamburger {
@@ -102,8 +109,10 @@ body {
     flex-direction: column;
     width: 20%;
     height: 100%;
-    text-align: center;
+    text-align: left;
+    padding-left: 2rem;
     transition: 0.3s;
+    box-shadow: rgba(0, 0, 0, 0.22) 0px 10px 12px;
 }
 
 .panel.active {
@@ -115,7 +124,7 @@ body {
     line-height: 2.5vw;
 }
 
-.modeTxt {
+.switchTxt {
     margin: 0.5%;
     font-size: 1.5vw;
 }
@@ -123,8 +132,8 @@ body {
 .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 2.8rem;
+    height: 1.5rem;
     margin-right: 5px;
 }
 
@@ -151,8 +160,8 @@ body {
 .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    width: 1rem;
+    height: 1rem;
     left: 4px;
     bottom: 4px;
     background-color: white;
@@ -165,9 +174,9 @@ input:checked+.slider {
 }
 
 input:checked+.slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+    -webkit-transform: translateX(1.3rem);
+    -ms-transform: translateX(1.3rem);
+    transform: translateX(1.3rem);
 }
 
 /* Rounded sliders */
@@ -179,66 +188,17 @@ input:checked+.slider:before {
     border-radius: 50%;
 }
 
-@media only screen and (max-width: 800px) {
-    #reset {
-        font-size: clamp(12px, 3vw, 14px);
-        /*minimum, preferred & max
-        if preferred > max, thn max will be used otherwise preferred will be used*/
-    }
-
-    .info {
-        font-size: clamp(14px, 3.5vw, 16px);
-    }
-
-    .container {
-        grid-template-columns: repeat(3, 20vw);
-        grid-template-rows: repeat(3, 20vw);
-    }
-
-    .box:hover {
-        background-color: transparent;
-    }
-
-    .panel {
-        width: 30%;
-    }
-
-    .mode {
-        line-height: 4vw;
-    }
-
-    .modeTxt {
-        font-size: clamp(14px, 16px, 14px);
-    }
-
-    .switch {
-        width: 2.8rem;
-        height: 1.5rem;
-    }
-
-    .slider::before {
-        width: 1rem;
-        height: 1rem;
-    }
-
-    input:checked+.slider:before {
-        -webkit-transform: translateX(1.3rem);
-        -ms-transform: translateX(1.3rem);
-        transform: translateX(1.3rem);
-    }
-
+.sound {
+    margin-top: 8px;
 }
 
+/* designing for dark theme */
 .dark-theme {
     color: #eeeeee;
     background: #121212;
 }
 
-.dark-theme .box:hover {
-    background-color: #2e2e2e;
-}
-
-.dark-theme .panel {
+.dark-theme .box:hover, .dark-theme .panel {
     background-color: #2e2e2e;
 }
 
@@ -266,17 +226,56 @@ input:checked+.slider:before {
     border-bottom: 0;
 }
 
-@media only screen and (max-width: 440px) {
-    /* .mode{
-    send dark mode in next line
- } */
+.dark-theme .info, .dark-theme .switchTxt {
+    font-family: 'Lato';
+    font-weight: 600;
+}
+
+
+/* adding responsiveness */
+@media only screen and (max-width: 800px) {
+    #reset {
+        font-size: clamp(12px, 3vw, 14px);
+        /*minimum, preferred & max
+        if preferred > max, thn max will be used otherwise preferred will be used*/
+    }
+
+    .info {
+        font-size: clamp(14px, 3.5vw, 16px);
+    }
+
+    .container {
+        grid-template-columns: repeat(3, 20vw);
+        grid-template-rows: repeat(3, 20vw);
+    }
+
+    .box:hover {
+        background-color: transparent;
+    }
+
+    .panel {
+        width: 35%;
+        padding: 0.5rem;
+    }
+
+    .mode, .sound {
+        line-height: 4vw;
+    }
+
+    .switchTxt {
+        font-size: clamp(14px, 16px, 14px);
+    }
 
 }
 
-.playerX {
-    color: #87BB51;
-}
+@media only screen and (max-width: 460px) {
+    .mode {
+        margin-top: 4rem;
+    }
 
-.player0 {
-    color: #3594E8
+    .panel {
+        padding-left: 0.5rem;
+        width: 48%;
+    }
+
 }

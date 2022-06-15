@@ -14,18 +14,28 @@
     <div class="panel">
         <div class="mode">
             <label class="switch">
-                <input type="checkbox" id="switch">
+                <input type="checkbox">
                 <span class="slider round"></span>
             </label>
-            <span class="modeTxt">Dark mode</span>
+            <span class="switchTxt">Dark mode</span>
+        </div>
+        <div class="sound">
+            <label class="switch" id="soundSwitch">
+                <input type="checkbox" name="soundChkbox">
+                <span class="slider round"></span>
+            </label>
+            <span class="switchTxt">Turn sounds off</span>
         </div>
     </div>
     <div class="hamburger">
+        <!--three bars for hamburger menu-->
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
     </div>
+
     <br>
+
     <div class="gameContainer">
 
         <div class="gameInfo">
@@ -99,6 +109,7 @@
 
     <script src="script.js"> </script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
 </body>
 
 </html>
