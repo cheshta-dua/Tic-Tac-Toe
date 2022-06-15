@@ -1,6 +1,7 @@
-// let music = new Audio ("music.mp3")
-// let audioTurn = new Audio ("turn.mp3")
-// let gameSound = new Audio ("gameOver.mp3")
+let audioTurnX = new Audio("others/tingX.mp3");
+let audioTurn0 = new Audio("others/ting0.mp3");
+let audioWin = new Audio("others/win.mp3");
+let audioReset = new Audio("others/reset.mp3");
 
 let turn = "X";
 let gameOver = false;
@@ -26,7 +27,7 @@ function checkWin() {
                 spread: 70,
                 origin: { y: 0.6 }
             });
-
+            audioWin.play();
             gameOver = true;
         }
     })
@@ -43,12 +44,13 @@ Array.from(boxes).forEach(element => {
             //for changing color of X & 0  
             if (turn === "X") {
                 boxtext.classList.add("playerX");
+                audioTurnX.play();
             }
             else {
                 boxtext.classList.add("player0");
+                audioTurn0.play();
             }
             turn = changeTurn();
-            // audioTurn.play();
             checkWin();
             if (!gameOver) {
                 document.getElementsByClassName("info")[0].innerText = "Turn for " + turn; //changes first element of class info 
@@ -73,6 +75,7 @@ reset.addEventListener('click', () => {
     turn = "X";
     document.getElementsByClassName("info")[0].innerText = "Turn for " + turn;
     gameOver = false;
+    audioReset.play();
 })
 
 
