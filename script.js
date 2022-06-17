@@ -31,6 +31,7 @@ function checkWin() {
                 spread: 70,
                 origin: { y: 0.6 }
             });
+
             audioWin.play();
             gameOver = true;
         }
@@ -130,6 +131,7 @@ soundBtn.addEventListener('change', () => {
         audioTurn0.muted = true;
         audioTurnX.muted = true;
         audioWin.muted = true;
+        audioDraw.muted=true;
     }
 
     else {
@@ -137,5 +139,6 @@ soundBtn.addEventListener('change', () => {
         audioTurn0.muted = false;
         audioTurnX.muted = false;
         audioWin.muted = false;
+        audioDraw.muted=false;
     }
 })
