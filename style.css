@@ -89,6 +89,7 @@ body {
     cursor: pointer;
 }
 
+/*for converting ham menu to cross, fade out the middle bar & rotate the top & bottom bars*/
 .hamburger.active .bar:nth-child(2) {
     opacity: 0;
 }
@@ -144,7 +145,6 @@ body {
     height: 0;
 }
 
-/* The slider */
 .slider {
     position: absolute;
     cursor: pointer;
